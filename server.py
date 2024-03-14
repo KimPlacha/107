@@ -16,7 +16,7 @@ def test():
 
 @app.get("/about")
 def about():
-    me = {"name": "Adrian Aguinaga"}
+    me = {"name": "kimberly"}
     return json.dumps(me)
 
 @app.get("/version")
@@ -24,12 +24,21 @@ def version():
     version = {"name": "mouse", "version": "2","build": 123456}
     return json.dumps(version)
 
+@app.get("/blog")
+def blog():
+    return "this is the about page"
+
 # this time we need to read and write in to the server
 products  = []
 @app.get("/api/products")
 def get_products():
 
     return json.dumps(products)
+
+products  = []
+def fix_id(obj):
+    obj["_id"]=str(obj["_id"])
+    return obj
 
 @app.post("/api/products")
 def save_products():
